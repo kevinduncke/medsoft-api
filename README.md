@@ -39,14 +39,14 @@ The service is built with **Node.js**, **Express.js**, **TypeScript**, **Prisma 
 ---
 
 ## **Project Structure**
-src/
-  config/
-  controllers/
-  middleware/
-  models/
-  routes/
-  services/
-  app.ts
-  server.ts
+- src/
+  - config/
+  - controllers/
+  - middleware/
+  - models/
+  - routes/
+  - services/
+  - app.ts
+  - server.ts
 
 ---
