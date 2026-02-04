@@ -139,7 +139,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Prisma Generated Files
-src/generated
+src/config/generated
 
 # .env files
 .env

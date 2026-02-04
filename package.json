@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/kevinduncke/medsoft-api#readme",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
