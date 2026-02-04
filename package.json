@@ -1,0 +1,39 @@
+{
+  "name": "medsoft-api",
+  "version": "1.0.0",
+  "description": "Backend service for the Medsoft platform - A modular medical management system designed for clinics and small healthcare teams.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "lint": "echo \"no linting yet\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinduncke/medsoft-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kevinduncke/medsoft-api/issues"
+  },
+  "homepage": "https://github.com/kevinduncke/medsoft-api#readme",
+  "dependencies": {
+    "@prisma/client": "^7.3.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.3.0",
+    "typescript": "^5.9.3"
+  }
+}
