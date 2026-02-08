@@ -1,9 +1,6 @@
 import { Request, Response } from 'express';
-import { createUser, comparePassword, findUserByEmail } from '../services/auth.service';
+import { createUser, comparePassword, findUserByEmail, hashPassword } from '../services/auth.service';
 import { signToken } from '../services/jwt.service';
-import { Role } from '../config/generated/enums';
-import bcrypt from 'bcrypt';
-import { prisma } from '../config/prisma';
 
 // Login Controller.
 export const login = async (req: Request, res: Response) => {
@@ -60,22 +57,18 @@ export const register = async (req: Request, res: Response) => {
         }
 
         // Check if user already exists.
-        const existing = await prisma.user.findUnique({ where: { email } });
+        const existing = await findUserByEmail(email);
         if (existing) {
-            return res.status(400).json({ message: 'Email already exists.' });
-        }
+            return res.status(409).json({ message: 'Email already exists.' });
+        }        
 
-        const hashed = await bcrypt.hash(password, 10);
+        // Calling to hash the password
+        const hashed = await hashPassword(password);
 
-        // Create a new user with def role as RECEPTIONIST if not provided in the body.
+        // Calling to create a new user with default role as RECEPTIONIST 
+        // if not provided in the body.
         // Later restrict this router to admin ONLY!!.
-        const user = await prisma.user.create({
-            data: {
-                email,
-                password: hashed,
-                role
-            }
-        });
+        const user = await createUser(email, hashed, role);
 
         return res.status(201).json({
             message: 'User Created Successfully',

@@ -16,12 +16,10 @@ export const comparePassword = async (password: string, hash: string) => {
 
 // Create a new User.
 export const createUser = async (email: string, password: string, role: Role) => {
-    const passwordHash = await hashPassword(password);
-
     return prisma.user.create({
         data: {
             email,
-            password: passwordHash,
+            password,
             role,
         },
     });
