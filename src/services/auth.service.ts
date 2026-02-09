@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import { prisma } from '../config/prisma';
 import { Role } from '../config/generated/enums'; // Imported generated type for Role
+import { Permission } from '../config/generated/enums';
 
 const SALT_ROUNDS = 10;
 
@@ -15,12 +16,13 @@ export const comparePassword = async (password: string, hash: string) => {
 };
 
 // Create a new User.
-export const createUser = async (email: string, password: string, role: Role) => {
+export const createUser = async (email: string, password: string, role: Role, permissions: Permission[]) => {
     return prisma.user.create({
         data: {
             email,
             password,
             role,
+            permissions
         },
     });
 };

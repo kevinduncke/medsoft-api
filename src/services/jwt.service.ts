@@ -9,6 +9,7 @@ export interface JWTPayload {
     sub: string;
     email: string;
     role: string;
+    permissions: string[];
 };
 
 // Sign a new JWT Token.

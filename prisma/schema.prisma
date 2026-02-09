@@ -14,6 +14,7 @@ model User {
   role      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  permissions Permission[] 
 }
 
 enum Role {
@@ -22,13 +23,23 @@ enum Role {
   RECEPTIONIST
 }
 
+enum Permission {
+  MANAGE_USERS
+  MANAGE_ROLES
+  VIEW_PATIENTS
+  EDIT_PATIENTS
+  VIEW_APPOINTMENTS
+  EDIT_APPOINTMENTS
+  VIEW_DASHBOARD
+}
+
 model Patient {
-  id        String  @id @default(cuid())
-  firstName String
-  lastName  String
-  email     String? @unique
-  phone     String?
-  birthDate DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String  @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String? @unique
+  phone       String?
+  birthDate   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

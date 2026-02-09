@@ -31,6 +31,15 @@ async function main() {
             email,
             password: hash,
             role: Role.ADMIN,
+            permissions: [
+                "MANAGE_USERS",
+                "MANAGE_ROLES",
+                "VIEW_PATIENTS",
+                "EDIT_PATIENTS",
+                "VIEW_APPOINTMENTS",
+                "EDIT_APPOINTMENTS",
+                "VIEW_DASHBOARD"
+            ]
         },
     });
 
