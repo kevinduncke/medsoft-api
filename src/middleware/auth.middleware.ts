@@ -7,6 +7,7 @@ export interface AuthRequest extends Request {
         id: string;
         email: string;
         role: string;
+        permissions: string[];
     };
 }
 
@@ -37,6 +38,7 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
             id: payload.sub,
             email: payload.email,
             role: payload.role,
+            permissions: payload.permissions || []
         };
 
         next();
