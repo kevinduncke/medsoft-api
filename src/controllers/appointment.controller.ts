@@ -1,5 +1,31 @@
 import { prisma } from "../config/prisma";
 
+// CREATE A NEW APPOINTMENT
+export const createAppointment = async (req: any, res: any) => {
+    try {
+        const { date, reason, notes, patientId, doctorId } = req.body;
+
+        const appointment = await prisma.appointment.create({
+            data: {
+                date: new Date(date),
+                reason,
+                notes,
+                patientId,
+                doctorId
+            },
+            include: {
+                patient: true,
+                doctor: true
+            }
+        });
+
+        return res.status(201).json(appointment);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 // GET ALL LIST OF APPOINTMENTS
 export const listAppointments = async (req: any, res: any) => {
     const appointments = await prisma.appointment.findMany({
@@ -22,7 +48,7 @@ export const getAppointment = async (req: any, res: any) => {
         },
     });
 
-    if(!appointment){
+    if (!appointment) {
         return res.status(404).json({ message: "Appointment not found" });
     }
 

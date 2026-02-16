@@ -11,23 +11,4 @@ router.post('/login', login);
 // User must be logged in & have role ADMIN.
 router.post('/register', authenticate, authorize('ADMIN'), register);
 
-/*
-
-// PATIENTS
-router.post(
-    '/patients', 
-    authenticate, 
-    requirePermission('EDIT_PATIENTS'), 
-    createPatient
-);
-
-// USERS
-router.get(
-    '/patients',
-    authenticate,
-    requirePermission('EDIT_PATIENTS'),
-    createPatient
-);
-*/
-
 export default router;

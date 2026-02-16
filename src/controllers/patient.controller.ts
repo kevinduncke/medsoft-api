@@ -1,5 +1,21 @@
 import { prisma } from "../config/prisma";
 
+// CREATE A NEW PATIENT
+export const createPatient = async (req: any, res: any) => {
+    try {
+        const data = req.body;
+
+        const patient = await prisma.patient.create({
+            data
+        });
+
+        return res.status(201).json(patient);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
 // GET ALL LIST OF PATIENTS
 export const listPatients = async (req: any, res: any) => {
     const patients = await prisma.patient.findMany();

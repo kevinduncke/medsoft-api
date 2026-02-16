@@ -35,9 +35,13 @@ async function main() {
                 "MANAGE_USERS",
                 "MANAGE_ROLES",
                 "VIEW_PATIENTS",
+                "NEW_PATIENTS",
                 "EDIT_PATIENTS",
+                "DELETE_PATIENTS",
                 "VIEW_APPOINTMENTS",
+                "NEW_APPOINTMENTS",
                 "EDIT_APPOINTMENTS",
+                "DELETE_APPOINTMENTS",
                 "VIEW_DASHBOARD"
             ]
         },
