@@ -34,6 +34,8 @@ async function main() {
             permissions: [
                 "MANAGE_USERS",
                 "MANAGE_ROLES",
+                "VIEW_PERMISSIONS",
+                "EDIT_PERMISSIONS",
                 "VIEW_PATIENTS",
                 "NEW_PATIENTS",
                 "EDIT_PATIENTS",
